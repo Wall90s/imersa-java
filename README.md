@@ -29,7 +29,8 @@ Com o gerador de stickers funcional:
 - Geramos stickers personalizados para todos os posters disponíveis na API
 
 ### Resultados
-![Captura do terminal](linkDaCapturaDoTerminal)
+Captura do Terminal<br>
+<img width="500" src="https://raw.githubusercontent.com/Wall90s/imersao-java/aula2/aluraStickers/captura-do-terminal.png">
 
-![Exemplo de sticker personalizado](linkDaCapturaDoTerminal)
-
+Exemplo de sticker personalizado<br>
+<img width="300" src="https://raw.githubusercontent.com/Wall90s/imersao-java/aula2/aluraStickers/The%20Shawshank%20Redemption.png">
