@@ -25,13 +25,15 @@ public class App {
         // Exibir e manipular os dados
         var generator = new StickersGenerator();
 
-        for (Map<String, String> movie : moviesList) {
+        for (int i = 0; i < 10; i++) {
+
+            Map<String, String> movie = moviesList.get(i);
 
             String imageUrl = movie.get("image");
             String title = movie.get("title");
 
             InputStream inputStream = new URL(imageUrl).openStream();
-            String archiveName = title + ".png";
+            String archiveName = "output/" + title + ".png";
 
             generator.create(inputStream, archiveName);
 
