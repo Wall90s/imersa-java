@@ -34,3 +34,19 @@ Captura do Terminal<br>
 
 Exemplo de sticker personalizado<br>
 <img width="300" src="https://raw.githubusercontent.com/Wall90s/imersao-java/aula2/aluraStickers/The%20Shawshank%20Redemption.png">
+
+## 📝 Aula 3
+Os arquivos da terceira aula ficarão separados na branch [aula3](https://github.com/Wall90s/imersao-java/tree/aula3).<br>
+
+### O que foi feito durante a aula:
+Tentamos utilizar a aplicação para consumir uma [API da NASA](https://api.nasa.gov/) (Astronomy Picture of the Day), porém o nosso código não estava pronto para receber uma API diferente, então foram feitas algumas alterações para que se tornasse mais adaptável:
+- Incluímos a url para acessar a API com busca para três "fotos do dia"
+
+Depois organizamos o código, divindo as ações da classe principal em outras classes busca a adaptação, distribuindo em:
+- Cliente HTTP para separar o <i>body da API
+- Conteúdo que Armazena a parte da API em título e url da imagem
+- Extrator para pegar os dados da API da IMDb
+- Extrator para pegar os dados da API da NASA
+
+Por último, criamos uma interface Extrator que irá exigir um método aos outros dois extratores, garantindo assim a retirada dos dados seguindo os parâmetros que precisamos.<br>
+Vale notar que dessa forma não alteramos o JsonParser e nem o Gerador de Stickers, pois já ficaram modulares o suficente para funcionar sem alterações como as que fizemos, gerando assim stickers para as duas API com uma simples alteração de url.
