@@ -1,43 +1,41 @@
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
         // Fazer uma conexão HTPP e buscar os top 250 filmes
-        String url = "https://api.mocki.io/v2/549a5d8b";
-        URI adress = URI.create(url);
-        var client = HttpClient.newHttpClient();
-        var request = HttpRequest.newBuilder(adress).GET().build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        String body = response.body();
+
+        // String url = "https://api.mocki.io/v2/549a5d8b";
+        // ContentExtractor extractor = new ContentExtractorImdb();
+
+        String url = "https://api.nasa.gov/planetary/apod?api_key=LCzeTJgXlGCjvbuMLJSCexKbOJfCw5PaY6CyoBJC&start_date=2022-06-12&end_date=2022-06-14";
+        ContentExtractor extractor = new ContentExtractorNasa();
+
+        var http = new HttpAmbient();
+        String json = http.searchData(url);
 
         // Extrair só os dados que interessam (título, poster, classificação)
         var parser = new JsonParser();
-        List<Map<String, String>> moviesList = parser.parse(body);
+        List<Map<String, String>> contentList = parser.parse(json);
 
         // Exibir e manipular os dados
+        List<Content> contents = extractor.extractContent(json);
+
         var generator = new StickersGenerator();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
 
-            Map<String, String> movie = moviesList.get(i);
+            Content content = contents.get(i);
 
-            String imageUrl = movie.get("image");
-            String title = movie.get("title");
-
-            InputStream inputStream = new URL(imageUrl).openStream();
-            String archiveName = "output/" + title + ".png";
+            InputStream inputStream = new URL(content.getUrlImage()).openStream();
+            String archiveName = "output/" + content.getTitle() + ".png";
 
             generator.create(inputStream, archiveName);
 
-            System.out.println(title);
+            System.out.println(content.getTitle());
             System.out.println();
         }
     }
