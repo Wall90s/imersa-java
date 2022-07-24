@@ -43,7 +43,7 @@ Tentamos utilizar a aplicação para consumir uma [API da NASA](https://api.nasa
 - Incluímos a url para acessar a API com busca para três "fotos do dia"
 
 Depois organizamos o código, divindo as ações da classe principal em outras classes busca a adaptação, distribuindo em:
-- Cliente HTTP para separar o <i>body da API
+- Cliente HTTP para separar o body da API
 - Conteúdo que Armazena a parte da API em título e url da imagem
 - Extrator para pegar os dados da API da IMDb
 - Extrator para pegar os dados da API da NASA
